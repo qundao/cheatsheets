@@ -1,3 +1,6 @@
 [submodule "reference"]
 	path = reference
 	url = https://github.com/Fechin/reference.git
+[submodule "reference-zh"]
+	path = reference-zh
+	url = https://github.com/jaywcjlove/reference.git
