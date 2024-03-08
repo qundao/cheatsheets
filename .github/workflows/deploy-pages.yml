@@ -18,14 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-        with:
-          submodule: 'recursive'
-      - name: Sync docs
-        run: |
-          git submodule update --init --recursive
-          cp -rp reference/{source,themes} .
-          cp -rp reference/package.json .
-          cp -rp reference/*.js .
+      with:
+        submodule: 'recursive'
+    - name: Sync docs
+      run: |
+        git submodule update --init --recursive
+        cp -rp reference/{source,themes} .
+        cp -rp reference/package.json .
+        cp -rp reference/*.js .
     - uses: actions/setup-node@v4
       with:
         node-version: latest
