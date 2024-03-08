@@ -1,0 +1,44 @@
+name: Deploy References Site
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+        with:
+          submodule: 'recursive'
+      - name: Sync docs
+        run: |
+          git submodule update --init --recursive
+          cp -rp reference/{source,themes} .
+          cp -rp reference/package.json .
+          cp -rp reference/*.js .
+    - uses: actions/setup-node@v4
+      with:
+        node-version: latest
+    - name: Install Dependencies
+      run: npm install
+    - name: Build Site
+      run: npm run build
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./public
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
