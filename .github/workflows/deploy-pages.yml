@@ -23,9 +23,10 @@ jobs:
     - name: Sync docs
       run: |
         git submodule update --init --recursive
-        cp -rp reference/{source,themes} .
-        cp -rp reference/package.json .
-        cp -rp reference/*.js .
+        cp -r reference/{source,themes} .
+        cp -r reference/package.json .
+        cp -r reference/*.js .
+        cp -r overwrite/layout/* ./themes/coo/layout/
     - uses: actions/setup-node@v4
       with:
         node-version: latest
