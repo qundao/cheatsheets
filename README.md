@@ -1,4 +1,4 @@
-# wayback-reference
+# cheatsheets
 
 [![Deploy Site](https://github.com/qundao/cheatsheets/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/qundao/cheatsheets/actions/workflows/deploy-pages.yml)
 
