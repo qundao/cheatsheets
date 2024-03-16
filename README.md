@@ -1,5 +1,7 @@
 # wayback-reference
 
+[![Deploy Site](https://github.com/qundao/cheatsheets/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/qundao/cheatsheets/actions/workflows/deploy-pages.yml)
+
 A backup of [Fechin/reference](https://github.com/Fechin/reference),
 official site is [cheatsheets.zip](https://cheatsheets.zip/).
 
