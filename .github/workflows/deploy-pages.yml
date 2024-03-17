@@ -19,14 +19,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodule: 'recursive'
+        ref: ${{ github.ref }}
+        submodule: recursive
     - name: Sync docs
-      run: |
-        git submodule update --init --recursive
-        cp -r reference/{source,themes} .
-        cp -r reference/package.json .
-        cp -r reference/*.js .
-        cp -r overwrite/layout/* ./themes/coo/layout/
+      run: bash run.sh
     - uses: actions/setup-node@v4
       with:
         node-version: latest
