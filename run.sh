@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 set -eu
 
+remote_repo="reference"
+local_repo="overrides"
+basedir="."
+
 echo "update submodule"
-git submodule update  --init --recursive
+git submodule update  --init --recursive ${remote_repo}
 
-echo "copy reference"
-cp -r reference/{source,themes} .
-cp -r reference/package.json .
-cp -r reference/*.js .
+echo "copy ${remote_repo}"
+cp -r ${remote_repo}/{source,themes}    ${basedir}
+cp -r ${remote_repo}/package.json       ${basedir}
+cp -r ${remote_repo}/*.js               ${basedir}
 
-echo "overrides layout"
-cp -r overrides/layout/* ./themes/coo/layout/
+echo "Update ${local_repo} layout"
+cp -r ${local_repo}/layout/*            ${basedir}/themes/coo/layout/
