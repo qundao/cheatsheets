@@ -2,7 +2,7 @@
 set -eu
 
 echo "update submodule"
-git submodule update --recursive
+git submodule update  --init --recursive
 
 echo "copy reference"
 cp -r reference/{source,themes} .
